@@ -100,10 +100,17 @@ public class IntList {
         //TODO:  fill in method
         if (B == null) return A;
         if (A == null) return B;
-        IntList head = new IntList();
-        head.rest = A;
-        dcatenate(head.rest, B);
-        return head.rest;
+        IntList head = new IntList(), node = head, slow = A;
+        while (slow != null) {
+            node.first = slow.first;
+            slow = slow.rest;
+            if (slow != null) {
+                node.rest = new IntList();
+                node = node.rest;
+            }
+        }
+        node.rest = B;
+        return head;
     }
 
 
@@ -227,6 +234,16 @@ public class IntList {
         }
         out.format(")");
         return out.toString();
+    }
+
+
+    public static void main(String[] args) {
+        IntList A = IntList.of(1, 2, 3);
+        IntList B = IntList.of(4, 5, 6);
+        IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
+        System.out.println(exp);
+        System.out.println(IntList.catenate(A, B));
+        System.out.println(A);
     }
 }
 
