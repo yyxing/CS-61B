@@ -113,6 +113,14 @@ public class IntList {
         return head;
     }
 
+    public static IntList reverse(IntList A) {
+        if (A == null || A.rest == null) return A;
+        IntList node = reverse(A.rest);
+        A.rest.rest = A;
+        A.rest = null;
+        return node;
+    }
+
 
     /**
      * DO NOT MODIFY ANYTHING BELOW THIS LINE! Many of the concepts below here
