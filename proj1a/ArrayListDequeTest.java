@@ -1,5 +1,5 @@
 /** Performs some basic linked list tests. */
-public class LinkedListDequeTest {
+public class ArrayListDequeTest {
 	
 	/* Utility method for printing out empty checks. */
 	public static boolean checkEmpty(boolean expected, boolean actual) {
@@ -34,7 +34,7 @@ public class LinkedListDequeTest {
 	  *
 	  * && is the "and" operation. */
 	public static void addIsEmptySizeTest() {
-		LinkedListDeque<String> lld1 = new LinkedListDeque<String>();
+		ArrayDeque<String> lld1 = new ArrayDeque<String>();
 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
@@ -62,7 +62,7 @@ public class LinkedListDequeTest {
 
 		System.out.println("Running add/remove test.");
 
-		LinkedListDeque<Integer> lld1 = new LinkedListDeque<Integer>();
+		ArrayDeque<Integer> lld1 = new ArrayDeque<Integer>();
 		// should be empty 
 		boolean passed = checkEmpty(true, lld1.isEmpty());
 
@@ -77,9 +77,33 @@ public class LinkedListDequeTest {
 		printTestStatus(passed);
 	}
 
+	public static void addGrowTest() {
+		ArrayDeque<String> lld1 = new ArrayDeque<>();
+		lld1.addLast("a");
+		lld1.addLast("b");
+		lld1.addFirst("c");
+		lld1.addLast("d");
+		lld1.addLast("e");
+		lld1.addFirst("f");
+		lld1.addLast("g");
+		lld1.addLast("h");
+		lld1.addLast("Z");
+		lld1.printDeque();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.removeLast();
+		lld1.printDeque();
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Running tests.\n");
 		addIsEmptySizeTest();
 		addRemoveTest();
+		addGrowTest();
 	}
 } 

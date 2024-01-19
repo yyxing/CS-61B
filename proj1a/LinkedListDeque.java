@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T>{
 
-    int size;
-    Node<T> tail;
-    Node<T> head;
+    private int size;
+    private Node<T> tail;
+    private Node<T> head;
     private static class Node<E> {
         E item;
         Node<E> next;
@@ -19,60 +20,58 @@ public class LinkedListDeque<T> implements Deque<T>{
         size = 0;
     }
 
-    @Override
     public void addFirst(T item) {
-        if (head == null) {
-            head = new Node<>(null, item, null);
-            size++;
-            return;
+        Node<T> h = head;
+        Node<T> node = new Node<>(null, item, h);
+        head = node;
+        if (h == null) {
+            tail = node;
+        }else {
+            h.prev = node;
         }
-        head = new Node<>(null, item, head);
         size++;
     }
 
-    @Override
     public void addLast(T item) {
-        if (tail == null) {
-            tail = new Node<>(null, item, null);
-            size++;
-            return;
+        Node<T> t = tail;
+        Node<T> node = new Node<>(t, item, null);
+        tail = node;
+        if (t == null) {
+            head = node;
+        }else {
+            t.next = node;
         }
-        tail = new Node<>(tail, item, null);
         size++;
     }
 
-    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public void printDeque() {
 
     }
 
-    @Override
     public T removeFirst() {
-        Node<T> node = head;
+        if (head == null) return null;
+        T item = head.item;
         head = head.next;
         size--;
-        return node.item;
+        return item;
     }
 
-    @Override
     public T removeLast() {
-        Node<T> node = tail;
+        if (tail == null) return null;
+        T item = tail.item;
         tail = tail.prev;
         size--;
-        return node.item;
+        return item;
     }
 
-    @Override
     public T get(int index) {
         int c = 0;
         Node<T> node = head;
