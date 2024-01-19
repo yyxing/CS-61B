@@ -37,14 +37,18 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T item) {
-        if (needGrow()) grow();
+        if (needGrow()) {
+            grow();
+        }
         elements[front] = item;
         front = (front + capacity - 1) % capacity;
         size++;
     }
 
     public void addLast(T item) {
-        if (needGrow()) grow();
+        if (needGrow()) {
+            grow();
+        }
         tail = (tail + 1) % capacity;
         elements[tail] = item;
         size++;
@@ -69,8 +73,8 @@ public class ArrayDeque<T> {
 
     public void printDeque() {
         int c = size;
-        for (int i = (front + 1); c > 0 ; i = (i + 1) % capacity , c--) {
-            System.out.println("index: "+ (i % capacity) +"  item: " + elements[i % capacity].toString());
+        for (int i = (front + 1); c > 0; i = (i + 1) % capacity, c--) {
+            System.out.println("index: " + (i % capacity) + "  item: " + elements[i % capacity].toString());
         }
         System.out.println();
     }
@@ -80,7 +84,9 @@ public class ArrayDeque<T> {
         front = (front + 1) % capacity;
         elements[front] = null;
         size--;
-        if (needDecrease()) decrease();
+        if (needDecrease()) {
+            decrease();
+        }
         return item;
     }
 
@@ -89,7 +95,9 @@ public class ArrayDeque<T> {
         elements[tail] = null;
         tail = (tail + capacity - 1) % capacity;
         size--;
-        if (needDecrease()) decrease();
+        if (needDecrease()) {
+            decrease();
+        }
         return item;
     }
 

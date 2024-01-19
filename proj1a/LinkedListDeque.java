@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 
-public class LinkedListDeque<T>{
+public class LinkedListDeque<T> {
 
     private int size;
     private Node<T> tail;
     private Node<T> head;
+
     private static class Node<E> {
         E item;
         Node<E> next;
@@ -16,6 +17,7 @@ public class LinkedListDeque<T>{
             this.prev = prev;
         }
     }
+
     public LinkedListDeque() {
         size = 0;
     }
@@ -26,7 +28,7 @@ public class LinkedListDeque<T>{
         head = node;
         if (h == null) {
             tail = node;
-        }else {
+        } else {
             h.prev = node;
         }
         size++;
@@ -38,7 +40,7 @@ public class LinkedListDeque<T>{
         tail = node;
         if (t == null) {
             head = node;
-        }else {
+        } else {
             t.next = node;
         }
         size++;
@@ -57,17 +59,27 @@ public class LinkedListDeque<T>{
     }
 
     public T removeFirst() {
-        if (head == null) return null;
+        if (isEmpty()) {
+            return null;
+        }
         T item = head.item;
         head = head.next;
+        if (head == null) {
+            tail = null;
+        }
         size--;
         return item;
     }
 
     public T removeLast() {
-        if (tail == null) return null;
+        if (isEmpty()) {
+            return null;
+        }
         T item = tail.item;
         tail = tail.prev;
+        if (tail == null) {
+            head = null;
+        }
         size--;
         return item;
     }
@@ -76,11 +88,11 @@ public class LinkedListDeque<T>{
         int c = 0;
         Node<T> node = head;
         while (node != null) {
-            c++;
-            node = node.next;
             if (c == index) {
                 return node.item;
             }
+            c++;
+            node = node.next;
         }
         return null;
     }
@@ -89,11 +101,11 @@ public class LinkedListDeque<T>{
         int c = 0;
         Node<T> node = tail;
         while (node != null) {
-            c++;
-            node = node.prev;
             if (c == index) {
                 return node.item;
             }
+            c++;
+            node = node.prev;
         }
         return null;
     }

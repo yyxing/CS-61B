@@ -1,6 +1,5 @@
 /** Performs some basic linked list tests. */
 public class ArrayListDequeTest {
-	
 	/* Utility method for printing out empty checks. */
 	public static boolean checkEmpty(boolean expected, boolean actual) {
 		if (expected != actual) {
@@ -106,4 +105,4 @@ public class ArrayListDequeTest {
 		addRemoveTest();
 		addGrowTest();
 	}
-} 
+}
