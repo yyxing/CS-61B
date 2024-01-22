@@ -63,7 +63,7 @@ public class ArrayDeque<T> {
     }
 
     private boolean needGrow() {
-        return size == capacity;
+        return size >= (1 - ratio) * capacity;
     }
 
     private boolean needDecrease() {

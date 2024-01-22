@@ -82,13 +82,32 @@ public class ArrayListDequeTest {
     }
 
     public static void addGrowTest() {
-        ArrayDeque<String> lld1 = new ArrayDeque<>();
-		lld1.addFirst("0");
-		System.out.println(lld1.size());
-		System.out.println(lld1.size());
-		System.out.println(lld1.removeFirst());
-		lld1.printDeque();
-    }
+        ArrayDeque<Integer> lld1 = new ArrayDeque<>();
+		lld1.addFirst(0);
+		lld1.addLast(1);
+		lld1.removeLast();
+		lld1.addLast(3);
+		lld1.get(1);
+		lld1.addLast(5);
+		lld1.addFirst(6);
+		lld1.addLast(7);
+		lld1.get(0);
+		lld1.removeLast();
+		lld1.addLast(10);
+		lld1.addFirst(11);
+		lld1.removeLast();
+		lld1.addFirst(13);
+		lld1.removeLast();
+		lld1.addLast(15);
+		lld1.removeLast();
+		lld1.addLast(17);
+		lld1.get(1);
+		lld1.addLast(19);
+		lld1.addLast(20);
+		lld1.removeFirst();
+		lld1.addFirst(22);
+		lld1.get(7);
+	}
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
