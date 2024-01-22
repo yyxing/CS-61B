@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class LinkedListDeque<T> {
 
     private int size;

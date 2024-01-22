@@ -67,21 +67,27 @@ public class ArrayDeque<T> {
     }
 
     private boolean needDecrease() {
-        if (capacity == 8) return false;
+        if (capacity == 8) {
+            return false;
+        }
         return size <= (capacity * ratio);
     }
 
     public void printDeque() {
         int c = size;
         for (int i = (front + 1); c > 0; i = (i + 1) % capacity, c--) {
-            System.out.println("index: " + (i % capacity) + "  item: " + elements[i % capacity].toString());
+            System.out.println("index: " + (i % capacity)
+                    + "  item: " + elements[i % capacity].toString());
         }
         System.out.println();
     }
 
     public T removeFirst() {
-        T item = (T) elements[front];
+        if (isEmpty()) {
+            return null;
+        }
         front = (front + 1) % capacity;
+        T item = (T) elements[front];
         elements[front] = null;
         size--;
         if (needDecrease()) {
@@ -91,6 +97,9 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
         T item = (T) elements[tail];
         elements[tail] = null;
         tail = (tail + capacity - 1) % capacity;
@@ -102,7 +111,9 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if (index <= front || index > tail) return null;
+        if (index < 0 || index >= (tail - front + capacity) % capacity) {
+            return null;
+        }
         return (T) elements[(front + 1 + index) % capacity];
     }
 
