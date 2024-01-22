@@ -64,6 +64,8 @@ public class LinkedListDeque<T> {
         head = head.next;
         if (head == null) {
             tail = null;
+        } else {
+            head.prev = null;
         }
         size--;
         return item;
@@ -77,6 +79,8 @@ public class LinkedListDeque<T> {
         tail = tail.prev;
         if (tail == null) {
             head = null;
+        } else {
+            tail.next = null;
         }
         size--;
         return item;

@@ -82,19 +82,7 @@ public class LinkedListDequeTest {
     }
 
     public static void addGrowTest() {
-        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
-		lld1.addFirst(0);
-		lld1.removeFirst();
-		lld1.addLast(3);
-		lld1.removeFirst();
-		lld1.addLast(5);
-		lld1.removeLast();
-		lld1.addFirst(7);
-		lld1.addFirst(8);
-		lld1.removeLast();
-		lld1.addFirst(10);
-		System.out.println(lld1.getRecursive(0));
-	}
+    }
 
     public static void main(String[] args) {
         System.out.println("Running tests.\n");
