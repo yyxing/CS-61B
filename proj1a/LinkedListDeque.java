@@ -100,15 +100,16 @@ public class LinkedListDeque<T> {
     }
 
     public T getRecursive(int index) {
-        int c = 0;
-        Node<T> node = tail;
-        while (node != null) {
-            if (c == index) {
-                return node.item;
-            }
-            c++;
-            node = node.prev;
+        if (index >= size) {
+            return null;
         }
-        return null;
+        return getRecursiveHelper(head, index);
+    }
+
+    private T getRecursiveHelper(Node<T> node, int index) {
+        if (index == 0) {
+            return node.item;
+        }
+        return getRecursiveHelper(node.next, index - 1);
     }
 }
